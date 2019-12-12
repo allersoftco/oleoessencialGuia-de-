@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     top: 25,
    backgroundColor:"#9ACD32",
    borderRadius: 20,
+   keyboardShouldPersistTaps: 'handled',
   },
   buttontext:{
     textAlign:"center",

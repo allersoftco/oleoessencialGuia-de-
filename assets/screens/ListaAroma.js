@@ -60,7 +60,7 @@ render(){
 
       <Titulo>Aromas</Titulo>
 
-      <ScrollView>
+<ScrollView style={styles.rolagem}>
       <View style={styles.listaWrapper}>
         <FlatList
           data={this.state.dataSource}
@@ -81,9 +81,12 @@ render(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 0,
     backgroundColor: '#fff',
         paddingTop: Constants.statusBarHeight,
+  },
+  rolagem:{
+    top: 5,
   },
   listaWrapper:{
     top: 10,

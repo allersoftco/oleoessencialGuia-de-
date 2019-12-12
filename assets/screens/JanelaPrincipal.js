@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, Image , TouchableOpacity, SafeAreaView} from 'react-native';
+import {Text, View, StyleSheet, Image , TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
 import Constants from 'expo-constants';
 
 export default class JanelaPrincipal extends React.Component {
@@ -9,29 +9,52 @@ export default class JanelaPrincipal extends React.Component {
   }
 
  static navigationOptions = {
-    headerTitle: '',
-    height: 0,
+    headerTitle: 'Guia dos Óleos Essenciais',
+    headerTintColor: '#000'    
   };
    
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <Image style={styles.logo} 
         source = {{uri: 'http://www.aller.com.br/oleosessenciais/assets/images/oleos-essenciais-504x504.jpg'}}
          />
-         <Text style={styles.title}>Guia dos Óleos Essenciais</Text>
          
-         <View style={styles.menuAcesso}>
-         
-         <TouchableOpacity style={styles.botaoImpar,styles.botao, styles.btnAzul}
+      <ScrollView>
+      <View style={styles.menuAcesso}>
+         <TouchableOpacity style={styles.botaoImpar,styles.botao, styles.btnOrchid}
+                  onPress={() => this.props.navigation.navigate('Aplicacao')}
+         >
+         <Text style={styles.textoDoBotao}>
+         Lista de Aplicações
+         </Text>
+         </TouchableOpacity>
+
+         <TouchableOpacity style={styles.botaoPar,styles.botao, styles.btnAzul}
                   onPress={() => this.props.navigation.navigate('Aroma')}
          >
          <Text style={styles.textoDoBotao}>
          Lista de Aromas
          </Text>
          </TouchableOpacity>
+
+         <TouchableOpacity style={styles.botaoImpar,styles.botao, styles.btnCianoEscuro}
+                  onPress={() => this.props.navigation.navigate('Classificacao')}
+         >
+         <Text style={styles.textoDoBotao}>
+         Lista de Classificações
+         </Text>
+         </TouchableOpacity>    
+
+         <TouchableOpacity style={styles.botaoPar,styles.botao, styles.btnCoral}
+                  onPress={() => this.props.navigation.navigate('Familia')}
+         >
+         <Text style={styles.textoDoBotao}>
+         Lista de Famílias
+         </Text>
+         </TouchableOpacity>         
          
-         <TouchableOpacity style={styles.botaoPar, styles.botao, styles.btnVerde}
+         <TouchableOpacity style={styles.botaoImpar, styles.botao, styles.btnVerde}
                   onPress={() => this.props.navigation.navigate('Oleo')}
          >
          <Text style={styles.textoDoBotao}>
@@ -39,7 +62,7 @@ export default class JanelaPrincipal extends React.Component {
          </Text>
          </TouchableOpacity>
 
-         <TouchableOpacity style={styles.botaoImpar, styles.botao, styles.btnLaranja}
+         <TouchableOpacity style={styles.botaoPar, styles.botao, styles.btnLaranja}
          onPress={() => this.props.navigation.navigate('Tratamento')}
          >
          <Text style={styles.textoDoBotao}>
@@ -47,15 +70,17 @@ export default class JanelaPrincipal extends React.Component {
          </Text>
          </TouchableOpacity>
 
-         <TouchableOpacity style={styles.botaoPar,styles.botao, styles.btnVioleta}
+         <TouchableOpacity style={styles.botaoImpar,styles.botao, styles.btnVioleta}
          onPress={() => this.props.navigation.navigate('Diluicao')}
          >
          <Text style={styles.textoDoBotao}>
          Calcular Diluição de Óleos
          </Text>
          </TouchableOpacity>
+
+         </View>
+      </ScrollView>
       </View>
-      </SafeAreaView>
     );
   }
 }
@@ -63,7 +88,8 @@ export default class JanelaPrincipal extends React.Component {
 const styles = StyleSheet.create({
   container: {
   flex: 1,
-    padding: 24,
+  top: 10,
+    padding: 3,
     backgroundColor: '#fff',
         paddingTop: Constants.statusBarHeight,
             alignItems: 'center',
@@ -71,10 +97,11 @@ const styles = StyleSheet.create({
   },
 
   menuAcesso: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 10,
+    marginTop: 10,
+    marginBottom: 30,
+        alignItems: 'center',
   },
-   
    
   logo: {
     height: 200,
@@ -82,17 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 150,
   },
   
-  title:{
-  marginTop: 20,
-  marginBottom: 20,
-  fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',  
-  },
-  
     botao: {
-    height: 40,
-    width: '100%',
     alignItems: 'center',
     padding: 10, 
       marginTop: 20,
@@ -102,15 +119,26 @@ const styles = StyleSheet.create({
   btnVerde: {
       backgroundColor:"#9ACD32",
   },
-  
+
     btnAzul: {
         backgroundColor:"#79A3E7",
     },
-    
+
+btnCianoEscuro:{
+  backgroundColor: "#008B8B",
+},
+    btnCoral: {
+        backgroundColor:"#FF7F50",
+    },  
+
       btnLaranja: {
           backgroundColor:"#FFA500",
       },      
       
+btnOrchid: {
+backgroundColor: "#BA55D3",
+},
+
       btnVioleta: {
       backgroundColor: "#C71585",
       },

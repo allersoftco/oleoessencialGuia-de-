@@ -28,15 +28,15 @@ export default class ListaOleo extends React.Component {
 
 
   componentDidMount(){
-    return fetch('https://facebook.github.io/react-native/movies.json')
+    return fetch("http://www.aller.com.br/oleoessencial/table_json.php?t=oleo_essencial")
       .then((response) => response.json())
       .then((responseJson) => {
 
         this.setState({
           isLoading: false,
-          dataSource: responseJson.movies,
+          dataSource: responseJson.oleos,
         }, function(){
-
+            
         });
 
       })
@@ -49,27 +49,27 @@ render(){
     if(this.state.isLoading){
       return(
       <SafeAreaView style={styles.container}>      
-      <Titulo>Óleos Essenciais</Titulo>   
+      <Titulo>Oleos</Titulo>   
           <ActivityIndicator/>  
         </SafeAreaView>
       )
     }
 
     return(
-      <SafeAreaView style={styles.container}>      
-      <Titulo>Óleos Essenciais</Titulo>
+      <SafeAreaView style={styles.container}>  
 
-      <ScrollView>
+      <Titulo>Oleos</Titulo>
+
+<ScrollView style={styles.rolagem}>
       <View style={styles.listaWrapper}>
         <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
           <View style={styles.listItem}>
-          <Text style={styles.listaItem}>{item.title}</Text>
-          <Text style={styles.listaDescription}>{item.releaseYear}</Text>
+          <Text style={styles.listaItem}>{item.oleo_essencial}</Text>          
           </View>
           }
-          keyExtractor={({id}, index) => id}
+          keyExtractor={({id_oleo}, index) => id_oleo}
         />
       </View>
       </ScrollView>
@@ -81,9 +81,12 @@ render(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 0,
     backgroundColor: '#fff',
         paddingTop: Constants.statusBarHeight,
+  },
+  rolagem:{
+    top: 5,
   },
   listaWrapper:{
     top: 10,
@@ -101,9 +104,4 @@ const styles = StyleSheet.create({
     borderEndWidth: 1,    
     fontWeight: 'bold',
   },
-  listaDescription:{
-    padding: 10,
-    marginVertical: 5,
-    backgroundColor: 'white',
-  }
 });
