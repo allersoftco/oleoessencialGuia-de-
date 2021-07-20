@@ -1,7 +1,7 @@
 {
   "name": "oleos-essenciais",
   "version": "0.0.0",
-  "description": "Informações diversas sobre os óleos essenciais, benefícios e suas aplicações.",
+  "description": "InformaÃ§Ãµes diversas sobre os Ã³leos essenciais, benefÃ­cios e suas aplicaÃ§Ãµes.",
   "author": null,
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
@@ -11,7 +11,7 @@
   "dependencies": {
     "expo": "35.0.0",
     "react": "16.8.3",
-    "react-native": "0.59.8",
+    "react-native": ">=0.62.3",
     "@expo/vector-icons": "10.0.0",
     "expo-asset": "7.0.0",
     "expo-font": "7.0.0",
